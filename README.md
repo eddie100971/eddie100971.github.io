@@ -1,68 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### A basic template to get started with HTML, CSS, and JavaScript
 
-## Available Scripts
+This project is a fork of the [HTML5 Boilerplate](http://html5boilerplate.com).  
+It has been simplified for those starting out with web development and programming.
 
-In the project directory, you can run:
+An [**example site**](http://pfnp.adrianbautista.com) built with this template.
 
-### `yarn start`
+## Quick start
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### How to download this template:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. **Easy Way** - Download the `.zip` file
+   * You can use the "Download ZIP" button in the right sidebar or click [this link](https://github.com/adrianbautista/html-css-template/archive/pfnp.zip).
+   * Unzip the template by double clicking on the downloaded `html-css-template-pfnp.zip` file.
+2. **Programmer Way** - Clone the Git Repo
+   * If you have git on your computer and a github account, you can clone this project from the command line
+     ```
+     git clone https://github.com/adrianbautista/html-css-template.git
+     ```
 
-### `yarn test`
+### How to use this template:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Opening the template
+     * If you downloaded the zip file, open the unzipped **folder** `html-css-template-pfnp` in a text editor  
+     (e.g. [Sublime Text 2](http://www.sublimetext.com/2)).
+     * If you cloned the project using git, open the **folder** `html-css-template` in a text editor  
+     (e.g. [Sublime Text 2](http://www.sublimetext.com/2)).
 
-### `yarn build`
+2. Using the template  
+  
+   #### HTML
+     * Start with `index.html`, this will be your root page (the main page)  
+       Questions about its content? Refer to `template.html`  
+     * To make new HTML pages, duplicate `template.html` inside the folder and rename it to the URL path you want.  
+       ```
+       about.html => my_website.com/about
+       ```  
+       *It's recommended that you delete the explanation comments in any new HTML pages*
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   #### CSS
+     * Start with `main.css` inside the `css` folder
+     * What are `normalize.css` and `html5-boilerplate.css` for?  
+       They make basic styles consistent across all kinds of web browsers
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+   #### JavaScript
+     * Start with `main.js` inside the `js` folder
+     * What's jQuery? It's a JavaScript library that allows you to manipulate your website much more easily with JavaScript
+     * If you download any jQuery plugins, paste a minified version of them into `plugins.js`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+   #### Images
+     * If you want to host your own images, put the image file (.jpg, .png, .gif) inside the images directory.  
+       Then the source on an **img tag** will be  
+       ```
+       <img src="/images/your_picture.jpg">
+       ```
