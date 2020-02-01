@@ -4,14 +4,20 @@
   <title>Spotify Web Playback SDK Quick Start Tutorial</title>
 </head>
 <body>
+  <br><br><br><br><br><br><br><br>
   <h1>Quizify</h1>
-
+  
   <input type="text" id="artist_name"><br><br>
 
-  <button onclick="search()">Search</button><br><br>
+  <button id="search_button" onclick="search()">Search</button><br><br>
   <button onclick="play('7GhIk7Il098yCjg4BQjzvb')">Start</button>
   <button onclick="resume()">Resume</button>
   <button onclick="stop()">Pause</button>
+
+
+  <br><br><br><br><br><br>
+  <h1>Current song:</h1>
+  <h2 id="current_song"></h2>
   
 
   <script

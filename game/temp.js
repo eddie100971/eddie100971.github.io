@@ -23,13 +23,13 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   });
 
   // Error handling
-  player.addListener('initialization_error', ({ message }) => { console.error(message); });
-  player.addListener('authentication_error', ({ message }) => { console.error(message); });
-  player.addListener('account_error', ({ message }) => { console.error(message); });
-  player.addListener('playback_error', ({ message }) => { console.error(message); });
+  // player.addListener('initialization_error', ({ message }) => { console.error(message); });
+  // player.addListener('authentication_error', ({ message }) => { console.error(message); });
+  // player.addListener('account_error', ({ message }) => { console.error(message); });
+  // player.addListener('playback_error', ({ message }) => { console.error(message); });
 
   // Playback status updates
-  player.addListener('player_state_changed', state => { console.log(state); });
+  // player.addListener('player_state_changed', state => { console.log(state); });
 
   // Ready
   player.addListener('ready', ({ device_id }) => {
@@ -38,9 +38,9 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   });
 
   // Not Ready
-  player.addListener('not_ready', ({ device_id }) => {
-    console.log('Device ID has gone offline', device_id);
-  });
+  // player.addListener('not_ready', ({ device_id }) => {
+  //   console.log('Device ID has gone offline', device_id);
+  // });
 
   // Connect to the player!
   player.connect();
@@ -53,7 +53,7 @@ function play(song_id) {
     data: '{"uris": ["spotify:track:' + song_id + '"]}',
     beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
     success: function(data) { 
-      console.log(data)
+      console.log("Playing song.");
     }
    });
 }
@@ -104,6 +104,7 @@ function search(query) {
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
         success: function(data) { 
           let song_id = data.tracks[0].id;
+          document.getElementById("current_song").innerHTML = data.tracks[0].name;
           play(song_id); 
           // console.log(data);
           // let tracks = data.tracks;
@@ -119,3 +120,17 @@ function search(query) {
      
   }
 }
+
+// Get the input field
+let input = document.getElementById("artist_name");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("search_button").click();
+  }
+});
