@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quizify</title>
+    <link rel="stylesheet" href="search.css">
+    <link rel="shortcut icon" href="../images/spotify.png">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+</head>
+<body style = "background-image: linear-gradient(#3D3D3D, #131111)">
+        <div class="wrapper">
+            <!-- <input type="text" class="input" placeholder="Search Artist"> -->
+            <input type="text" class="input searchtext" value="Joji" id="artist_name">
+
+            <div class="searchbtn"><button onclick="search()" id="search_button" class="search"></button><i class="fas fa-search"></i></div>
+        </div>
+        <div class="spotify-image">
+            <img class = 'image' src = "../images/spotify.png" height= "150" width="150">
+        </div>
+        <div class = "parent">
+            <div class = "user">Welcome,<div>
+            <div id="username" class = "username"></div>    
+        </div>
+        <div>
+            <img id="profile_pic" height = "100" width = "100">
+        </div>
+
+    <!-- <button id="search_button" onclick="search()">Search</button><br><br> -->
+    <button onclick="play('7GhIk7Il098yCjg4BQjzvb')">Start</button>
+    <button onclick="resume()">Resume</button>
+    <button onclick="stop()">Pause</button>
+    <button onclick="searchUser()">Test</button>
+    <!-- <button id="login_button">Login</button> -->
+    
+    <h1>Current song:</h1>
+    <img id="album_cover">
+    <h2 id="current_song"></h2>
+
+    <script src="search.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+</body>
+</html>

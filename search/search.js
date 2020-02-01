@@ -57,6 +57,8 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
   // Connect to the player!
   player.connect();
+
+  searchUser();
 };
 
 // Play a song using it's song ID
@@ -95,6 +97,22 @@ function resume() {
     }
    });
 }
+
+function searchUser() {
+    $.ajax({
+        url: 'https://api.spotify.com/v1/me',
+        type: "GET",
+        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
+        success: function(data) { 
+            console.log("Got user info.");
+            console.log(data);
+            let username = data.display_name;
+            let profile_pic = data.images[0].url;
+            document.getElementById("username").innerHTML = username;
+            document.getElementById("profile_pic").src = profile_pic;
+        }
+    });
+};
 
 function search(query) {
   let artist_name = document.getElementById("artist_name").value;

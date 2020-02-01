@@ -1,11 +1,11 @@
 @font-face {
     font-family: "liento-circular-black";
-    src: local("liento-circular-black"), url('fonts/lineto-circular-black.woff') format('woff')
+    src: local("liento-circular-black"), url('../fonts/lineto-circular-black.woff') format('woff')
 }
 
 @font-face {
     font-family: "proxima-nova-bold-webfont";
-    src: local("proxima-nova-bold-webfont"), url('fonts/proxima-nova-bold-webfont.woff') format('woff')
+    src: local("proxima-nova-bold-webfont"), url('../fonts/proxima-nova-bold-webfont.woff') format('woff')
 }
 .column {
     padding-top:100px;

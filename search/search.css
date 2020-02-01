@@ -1,11 +1,11 @@
 @font-face {
   font-family: "circular-book";
-  src: local("circular-book"), url('fonts/circular-book.woff') format('woff')
+  src: local("circular-book"), url('../fonts/circular-book.woff') format('woff')
 }
 
 @font-face {
   font-family: "proxima-nova-bold-webfont";
-  src: local("proxima-nova-bold-webfont"), url('fonts/proxima-nova-bold-webfont.woff') format('woff')
+  src: local("proxima-nova-bold-webfont"), url('../fonts/proxima-nova-bold-webfont.woff') format('woff')
 }
 
 *{
@@ -36,6 +36,8 @@
     border: none;
     border-radius: 5px;
     font-weight: bold;
+    font-family: "proxima-nova-bold-webfont";
+    font-size: 24px;
 }
 
 .searchbtn {
@@ -81,7 +83,7 @@
   font-size: 22;
 }
 
-.username{
+.username {
   font-family: "proxima-nova-bold-webfont";
   color: white;
   font-size: 50;

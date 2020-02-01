@@ -15,7 +15,7 @@
       
     function login(callback) {
         var CLIENT_ID = 'c73c11f33ea4410db54b8afefecca3ef';
-        var REDIRECT_URI = 'http://127.0.0.1:5500/game/game.html';
+        var REDIRECT_URI = 'http://127.0.0.1:5500/search/search.html';
         function getLoginURL(scopes) {
             return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID +
               '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) +
