@@ -105,7 +105,6 @@ function searchUser() {
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
         success: function(data) { 
             console.log("Got user info.");
-            console.log(data);
             let username = data.display_name;
             let profile_pic = data.images[0].url;
             document.getElementById("username").innerHTML = username;
@@ -114,51 +113,108 @@ function searchUser() {
     });
 };
 
+let track_id_list = [];
+let deferred = [];
+
 function search(query) {
   let artist_name = document.getElementById("artist_name").value;
   console.log(artist_name);
 
   if (artist_name) {
     // Get artist's ID
+    // $.ajax({
+    //   url: "https://api.spotify.com/v1/search?q=" + artist_name + "&type=artist" + "&limit=1",
+    //   type: "GET",
+    //   beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
+    //   success: function(data) { 
+    //     console.log(data.artists.items[0].name);
+    //     let artist_id = data.artists.items[0].id;
+    //     console.log("ID: " + artist_id)
+    //   }
+    //  }).then((data) => {
+    //   // Get artist's top tracks
+    //   $.ajax({
+    //     url: "https://api.spotify.com/v1/artists/" + data.artists.items[0].id + "/top-tracks?country=US",
+    //     type: "GET",
+    //     beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
+    //     success: function(data) { 
+    //       let num_songs = data.tracks.length;
+    //       let random_index = Math.floor(Math.random() * Math.floor(num_songs));
+
+    //       let song_id = data.tracks[random_index].id;
+    //       let album_cover = data.tracks[random_index].album.images[0].url;
+
+    //       document.getElementById("current_song").innerHTML = data.tracks[random_index].name;
+    //       document.getElementById("album_cover").src=album_cover;
+    //       document.getElementById("album_cover").height=100;
+    //       document.getElementById("album_cover").width=100;
+    //       play(song_id); 
+    //       // console.log(data);
+    //       // let tracks = data.tracks;
+    //       // tracks.forEach(element => {
+    //       //   console.log("Song name: " + element.name);
+    //       //   console.log("Song ID: " + element.id);
+    //       // });
+          
+    //     }
+    //   });
+    //  });
     $.ajax({
-      url: "https://api.spotify.com/v1/search?q=" + artist_name + "&type=artist" + "&limit=1",
-      type: "GET",
-      beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
-      success: function(data) { 
-        console.log(data.artists.items[0].name);
-        let artist_id = data.artists.items[0].id;
-        console.log("ID: " + artist_id)
-      }
-     }).then((data) => {
-      // Get artist's top tracks
-      $.ajax({
-        url: "https://api.spotify.com/v1/artists/" + data.artists.items[0].id + "/top-tracks?country=US",
+        url: "https://api.spotify.com/v1/search?q=" + artist_name + "&type=artist" + "&limit=1",
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
         success: function(data) { 
-          let num_songs = data.tracks.length;
-          let random_index = Math.floor(Math.random() * Math.floor(num_songs));
-
-          let song_id = data.tracks[random_index].id;
-          let album_cover = data.tracks[random_index].album.images[0].url;
-
-          document.getElementById("current_song").innerHTML = data.tracks[random_index].name;
-          document.getElementById("album_cover").src=album_cover;
-          document.getElementById("album_cover").height=100;
-          document.getElementById("album_cover").width=100;
-          play(song_id); 
-          // console.log(data);
-          // let tracks = data.tracks;
-          // tracks.forEach(element => {
-          //   console.log("Song name: " + element.name);
-          //   console.log("Song ID: " + element.id);
-          // });
-          
+        //   console.log(data.artists.items[0].name);
+          let artist_id = data.artists.items[0].id;
+        //   console.log("ID: " + artist_id)
         }
-      });
-     });
+       }).then((data) => {
+        // Get artist's albums
+        $.ajax({
+          url: "https://api.spotify.com/v1/artists/" + data.artists.items[0].id + "/albums?country=US",
+          type: "GET",
+          beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
+          success: function(data) { 
+            console.log("Found artist's albums.");
+            let albums = data.items;
+            // Find tracks in each album
+            albums.forEach(element => {
+                let album_id = element.id;
+                let album_cover = element.images[0].url;
+                deferred.push(
+                    $.ajax({
+                        url: "https://api.spotify.com/v1/albums/" + album_id + "/tracks",
+                        type: "GET",
+                        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
+                        success: function(data) { 
+                            tracks = data.items;
+                            tracks.forEach(element => {
+                                track_id_list.push([element.id, element.name, album_cover]);
+                            });
+                        }
+                    })
+                )
+            });
+            $.when.apply($, deferred).then((data) => {
+                console.log("Finding random song.");
+                let random_index = Math.floor(Math.random() * Math.floor(track_id_list.length));
 
-     
+                let song_id = track_id_list[random_index][0];
+                let song_name = track_id_list[random_index][1];
+                let album_cover = track_id_list[random_index][2];
+
+                play(song_id);
+
+                document.getElementById("current_song").innerHTML = song_name;
+                document.getElementById("album_cover").src = album_cover;
+
+                deferred = [];
+                track_id_list = [];
+            });
+
+          }
+        })
+       });  
   }
 }
 
