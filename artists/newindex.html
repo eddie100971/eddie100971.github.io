@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+    html{
+    background-color:white;
+    }
+    .container{
+        position: absolute;
+        /* margin: 20px auto; */
+        width:100%;
+        height:100%;
+        background-image: linear-gradient(to bottom right, white, black, white);
+        background-image: linear-gradient(to bottom left, white, black, white);
+        display:grid;
+        grid-template-columns: auto auto;
+        grid-row: auto auto;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
+
+    .box{
+      border: 5px solid black;
+      background-image: linear-gradient(to bottom right, #58D786, black);
+      padding: 20px;
+      border-radius:10px;
+      color: black;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 80px;
+      font-family:sans-serif;
+    }
+    .box:hover{
+        background-color: grey;
+        color: green;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+</style>
+
+</body>
+
+    <div class="container">
+        <button class="box">A</button>
+        <button class="box">B</button>
+        <button class="box">C</button>
+        <button class="box">D</button>
+    </div>
+    <div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </div>
+</html>
