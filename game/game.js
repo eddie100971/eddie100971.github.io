@@ -1,4 +1,21 @@
-const token = 'BQCIHxnDNdgMAICfhM8YvG3ZYM3Fg9YwNgLtatR0jBSQyXA8qyLGtShtePkwdW7IsJ3mjrLrNDyTPfu-VKfPR7VP8XYd-CuxcODgV_DD48Sqmfv63mWwR_tBm8h2_9Ny3ic_rDOqnWpMxHp0ubzEQL5arOOHrpZxwh30';
+// Get the hash of the url
+const hash = window.location.hash
+.substring(1)
+.split('&')
+.reduce(function (initial, item) {
+  if (item) {
+    var parts = item.split('=');
+    initial[parts[0]] = decodeURIComponent(parts[1]);
+  }
+  return initial;
+}, {});
+window.location.hash = '';
+
+// Set token
+let token = hash.access_token;   
+
+console.log("Token: " + token);
+
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 const clientId = 'c73c11f33ea4410db54b8afefecca3ef';
@@ -11,10 +28,6 @@ const scopes = [
 ];
 
 device = '';
-
-if (!token) {
-  window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
-}
 
 window.onSpotifyWebPlaybackSDKReady = () => {
   const player = new Spotify.Player({
@@ -38,14 +51,15 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   });
 
   // Not Ready
-  // player.addListener('not_ready', ({ device_id }) => {
-  //   console.log('Device ID has gone offline', device_id);
-  // });
+  player.addListener('not_ready', ({ device_id }) => {
+    console.log('Device ID has gone offline', device_id);
+  });
 
   // Connect to the player!
   player.connect();
 };
 
+// Play a song using it's song ID
 function play(song_id) {
   $.ajax({
     url: "https://api.spotify.com/v1/me/player/play?device_id=" + device,
@@ -58,25 +72,26 @@ function play(song_id) {
    });
 }
 
+// Pause a song
 function stop() {
   $.ajax({
     url: "https://api.spotify.com/v1/me/player/pause?device_id=" + device,
     type: "PUT",
-    data: '{"uris": ["spotify:track:7GhIk7Il098yCjg4BQjzvb"]}',
     beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
     success: function(data) { 
-      console.log(data)
+      console.log("Paused song.");
     }
    });
 }
 
+// Resume playing a song
 function resume() {
   $.ajax({
     url: "https://api.spotify.com/v1/me/player/play?device_id=" + device,
     type: "PUT",
     beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
     success: function(data) { 
-      console.log(data)
+      console.log("Resuming playback.");
     }
    });
 }
@@ -103,8 +118,17 @@ function search(query) {
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
         success: function(data) { 
-          let song_id = data.tracks[0].id;
-          document.getElementById("current_song").innerHTML = data.tracks[0].name;
+          console.log(data);
+          let num_songs = data.tracks.length;
+          let random_index = Math.floor(Math.random() * Math.floor(num_songs));
+
+          let song_id = data.tracks[random_index].id;
+          let album_cover = data.tracks[random_index].album.images[0].url;
+
+          document.getElementById("current_song").innerHTML = data.tracks[random_index].name;
+          document.getElementById("album_cover").src=album_cover;
+          document.getElementById("album_cover").height=100;
+          document.getElementById("album_cover").width=100;
           play(song_id); 
           // console.log(data);
           // let tracks = data.tracks;
