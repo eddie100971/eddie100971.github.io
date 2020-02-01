@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "liento-circular-black";
+    src: local("liento-circular-black"), url('fonts/lineto-circular-black.woff') format('woff')
+}
+
+@font-face {
+    font-family: "proxima-nova-bold-webfont";
+    src: local("proxima-nova-bold-webfont"), url('fonts/proxima-nova-bold-webfont.woff') format('woff')
+}
+.column {
+    padding-top:100px;
+    display: grid;
+    width: 50vw;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px 105px 100px;
+
+}
+button {
+    border: none;
+    background-color: #85F2AC;
+    text-align: center;
+    border: 2px solid #1D7F2D;
+    font-size: 16px;
+    display: inline;
+    padding: 5px 5px;
+    font-style: bold;
+    font-family: "liento-circular-black";
+
+
+
+}
+
+.login-button {
+    padding-top: 20px;
+    margin: 0 auto;
+}
+
+.login {
+    border-radius: 12px;
+    font-size:30px;
+    width: 250px;
+    height: 60px;
+    margin: 0 auto;
+}
+.login:hover{
+    background-color: #58D384; /* Green */color: black;
+}
+
+.Quizify {
+    font-size: 55px;
+    text-align: center;
+    font-family: "proxima-nova-bold-webfont" ;
+
+}
+.spotify-image {
+    margin: 0 auto;
+    padding-bottom: 150px;
+}
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
