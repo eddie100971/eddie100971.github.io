@@ -13,30 +13,42 @@
         <div class="wrapper">
             <!-- <input type="text" class="input" placeholder="Search Artist"> -->
             <input type="text" class="input searchtext" value="Joji" id="artist_name">
-
-            <div class="searchbtn"><button onclick="search()" id="search_button" class="search"></button><i class="fas fa-search"></i></div>
+            
+            <div class="searchbtn"><button onclick="search()" id="search_button" class="search"></button1><i class="fas fa-search"></i></div>
         </div>
-        <div class="spotify-image">
+        <!-- <div class="spotify-image">
             <img class = 'image' src = "../images/spotify.png" height= "150" width="150">
+        </div> -->
+        <div class="imagewrapper">
+            <div>
+                <img id ="profile_pic" height = "200" width = "200">
+            </div>
         </div>
-        <div class = "parent">
-            <div class = "user">Welcome,<div>
+        
+        <div class="otherwrapper">
+            
+            <div class = "user">User<div>
+                <!-- <div id="username" class = "username"></div>     -->
+            
+            
             <div id="username" class = "username"></div>    
+            
+        </div>        
+        
+        <div class="albumcoverwrapper">
+            <div class="onclickbuttonwrapper">
+                <button onclick="play('7GhIk7Il098yCjg4BQjzvb')">Start</button>
+                <button onclick="resume()">Resume</button>
+                <button onclick="stop()">Pause</button>
+                <button onclick="searchUser()">Test</button>
+            </div>
+            <h1>Current song:</h1>
+            <img id="album_cover">
+            <h2 class = "current_song" id="current_song"></h2>
         </div>
-        <div>
-            <img id="profile_pic" height = "100" width = "100">
-        </div>
-
+        
     <!-- <button id="search_button" onclick="search()">Search</button><br><br> -->
-    <button onclick="play('7GhIk7Il098yCjg4BQjzvb')">Start</button>
-    <button onclick="resume()">Resume</button>
-    <button onclick="stop()">Pause</button>
-    <button onclick="searchUser()">Test</button>
     <!-- <button id="login_button">Login</button> -->
-    
-    <h1>Current song:</h1>
-    <img id="album_cover">
-    <h2 id="current_song"></h2>
 
     <script src="search.js"></script>
     <script

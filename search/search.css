@@ -16,6 +16,55 @@
 	font-family: "liento-circular-black";
 }
 
+.onclickbuttonwrapper{
+  
+    position: relative;
+   
+}
+.albumcoverwrapper{
+  position: absolute;
+  right:-50%;
+  top: 400px;
+}
+
+h1, h2 {
+  font-family: "proxima-nova-bold-webfont";
+}
+
+.user{
+  position: relative;
+  top:30%;
+  left:15%;
+  font-family: "circular-book";
+  color: white;
+  font-size: 22;
+}
+
+.username {
+  position: relative;
+  
+  font-family: "proxima-nova-bold-webfont";
+  color: white;
+  font-size: 50;
+}
+
+img{
+  border-radius: 50%;
+  position: relative;
+  top: 30%;
+  left:15%;
+}
+.otherwrapper{
+  position:absolute;
+  top: 25%;
+  left:35%;
+}
+
+.imagewrapper{
+  position: absolute;
+  top:22.5%;
+  left:22.5%;
+}
 .wrapper{
 	position: absolute;
     top: 55%;
@@ -68,23 +117,12 @@
   background-color: #58D384; /* Green */color: black;
 }
 
-.spotify-image{
+/* .spotify-image{
   position: absolute;
   top: 18%;
   left: 29%;
-}
+} */
 
-.user{
-  position: absolute;
-  top: 25%;
-  left:42%;
-  font-family: "circular-book";
-  color: white;
-  font-size: 22;
-}
-
-.username {
-  font-family: "proxima-nova-bold-webfont";
-  color: white;
-  font-size: 50;
+.current_song {
+  color: darkgreen;
 }
