@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "circular-book";
+  src: local("circular-book"), url('fonts/circular-book.woff') format('woff')
+}
+
+@font-face {
+  font-family: "proxima-nova-bold-webfont";
+  src: local("proxima-nova-bold-webfont"), url('fonts/proxima-nova-bold-webfont.woff') format('woff')
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+	box-sizing: border-box;
+	font-family: "liento-circular-black";
+}
+
+.wrapper{
+	position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0,0.6);
+    max-width: 550px;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.wrapper .input {
+    width: 85%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.searchbtn {
+    background: #ffec00;
+    width: 10%;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.searchbtn .fas{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+
+}
+
+.search{
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.search:hover{
+  background-color: #58D384; /* Green */color: black;
+}
+
+.spotify-image{
+  position: absolute;
+  top: 18%;
+  left: 29%;
+}
+
+.user{
+  position: absolute;
+  top: 25%;
+  left:42%;
+  font-family: "circular-book";
+  color: white;
+  font-size: 22;
+}
+
+.username{
+  font-family: "proxima-nova-bold-webfont";
+  color: white;
+  font-size: 50;
+}
