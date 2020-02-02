@@ -1,21 +1,15 @@
 let tracks_info = JSON.parse(sessionStorage.getItem('track_info'));
 let token = sessionStorage.getItem('token');
 let device;
+let answer = '';
+
+let score = 0;
 
 window.onSpotifyWebPlaybackSDKReady = () => {
     const player = new Spotify.Player({
       name: 'Web Playback SDK Quick Start Player',
       getOAuthToken: cb => { cb(token); }
     });
-  
-    // Error handling
-    // player.addListener('initialization_error', ({ message }) => { console.error(message); });
-    // player.addListener('authentication_error', ({ message }) => { console.error(message); });
-    // player.addListener('account_error', ({ message }) => { console.error(message); });
-    // player.addListener('playback_error', ({ message }) => { console.error(message); });
-  
-    // Playback status updates
-    // player.addListener('player_state_changed', state => { console.log(state); });
   
     // Ready
     player.addListener('ready', ({ device_id }) => {
@@ -34,25 +28,42 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   };
 
 function startGame() {
-    console.log("hi");
     tracks_length = tracks_info.length;
+    already_played = new Array(tracks_length).fill(0);
+    four_random_ind = [-1, -1, -1, -1];
+
+    i = 0;
+    while (i != 4) {
+        random_ind = Math.floor(Math.random() * Math.floor(tracks_length));
+        if (already_played[random_ind] == 0) {
+            already_played[random_ind] = 1;
+            four_random_ind[i] = random_ind;
+            ++i;
+        }
+    }
+
+    play_index = Math.floor(Math.random() * Math.floor(4));
 
     // Song ID's for the four options
-    first_choice_id = tracks_info[0][0];
-    first_choice_name = tracks_info[0][1];
-    second_choice_id = tracks_info[1][0];
-    second_choice_name = tracks_info[1][1];
-    third_choice_id = tracks_info[2][0];
-    third_choice_name = tracks_info[2][1];
-    fourth_choice_id = tracks_info[3][0];
-    fourth_choice_name = tracks_info[3][1];
+    first_choice_id = tracks_info[four_random_ind[0]][0];
+    first_choice_name = tracks_info[four_random_ind[0]][1];
+    second_choice_id = tracks_info[four_random_ind[1]][0];
+    second_choice_name = tracks_info[four_random_ind[1]][1];
+    third_choice_id = tracks_info[four_random_ind[2]][0];
+    third_choice_name = tracks_info[four_random_ind[2]][1];
+    fourth_choice_id = tracks_info[four_random_ind[3]][0];
+    fourth_choice_name = tracks_info[four_random_ind[3]][1];
 
-    // first_choice = document.getElementById("choice1");
-    // second_choice = document.getElementById("choice2");
-    // third_choice = document.getElementById("choice3");
-    // fourth_choice = document.getElementById("choice4");
+    four_songs = [[first_choice_id, first_choice_name], [second_choice_id, second_choice_name],
+                 [third_choice_id, third_choice_name], [fourth_choice_id, fourth_choice_name]];
 
-    play(first_choice_id);
+    play(four_songs[play_index][0]);
+    answer = four_songs[play_index][1];
+
+    console.log("Already played array: " + already_played);
+    console.log("Four random indices: " + four_random_ind);
+    console.log("Playing index " + play_index + " of the random four.");
+    console.log("Currently playing: " + answer);
 
     document.getElementById("choice1").innerHTML = first_choice_name;
     document.getElementById("choice2").innerHTML = second_choice_name;
@@ -71,5 +82,16 @@ function play(song_id) {
         console.log("Playing song.");
       }
      });
-  }
+}
+
+function chooseAnswer(choice_num) {
+    if (answer == document.getElementById(choice_num).innerHTML) {
+        console.log("Correct!");
+        ++score;
+        document.getElementById("score").innerHTML = "Score: " + score;
+        startGame();
+    } else {
+        alert("Wrong! Choose again!");
+    }
+}
 
