@@ -1,34 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Spotify Web Playback SDK Quick Start Tutorial</title>
-</head>
-<body>
-  <br><br><br><br><br><br><br><br>
-  <h1>Quizify</h1>
-  
-  <input type="text" id="artist_name" value="JOJI"><br><br>
-
-  <button id="search_button" onclick="search()">Search</button><br><br>
-  <button onclick="play('7GhIk7Il098yCjg4BQjzvb')">Start</button>
-  <button onclick="resume()">Resume</button>
-  <button onclick="stop()">Pause</button><br><br><br>
-  <!-- <button id="login_button">Login</button> -->
-
-
-  <br><br><br><br><br><br>
-  <h1>Current song:</h1>
-  <img id="album_cover">
-  <h2 id="current_song"></h2>
-  
-  <h1 id="result"></h1>
-
-  <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous"></script>
-  <script src="https://sdk.scdn.co/spotify-player.js"></script>
-  <script src="game.js"></script>
-  <script src="../bower_components/spotify-web-api-js/src/spotify-web-api.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    @font-face {
+    font-family: "circular-book";
+    src: local("circular-book"), url('fonts/circular-book.woff') format('woff')
+    }
+    html{
+    background-color:black;
+    }
+    .container{
+        position: absolute;
+        /* margin: 20px auto; */
+        width:99%;
+        height:90%;
+        background-color: black;
+        /* background-image: linear-gradient(to bottom right, white, black, white);
+        background-image: linear-gradient(to bottom left, white, black, white); */
+        display:grid;
+        grid-template-columns: auto auto;
+        grid-row: auto auto;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
+    
+    .box{
+      border: 5px solid black;
+      background-color: #58D786;
+      /* background-image: linear-gradient(to bottom right, #58D786, black); */
+      padding: 20px;
+      border-radius:10px;
+      color: black;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 80px;
+      font:"circular-book";
+    }
+    .box:hover{
+        background-image: linear-gradient(to bottom right, #58D786, black);
+        color: black;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        cursor: pointer;
+    }
+    .box:active{
+        background-color: #3e8e41;
+        box-shadow: 0 5px #202020;
+        transform: translateY(8px);
+    }
+    h2{
+        position: center;
+        background-color: black;
+        color: white;
+        font-size: 25px;
+        font: "circular-book";
+    }
+</style>
+<h2>Score: </h2>
 </body>
+        
+    </div>
+    <div class="container">
+        <!-- <div class="grid-item">Score:</div>
+        <div class="grid-item">Score:</div> -->
+        <button id="choice1" class="box">A</button>
+        <button id="choice2" class="box">B</button>
+        <button id="choice3" class="box">C</button>
+        <button id="choice4" class="box">D</button>
+    </div>
+    <!-- <div class="score">
+        <button class="player">P1 Score</button>
+    </div> -->
+    <div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="../js/plugins.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="game.js"></script>
+    </div>
 </html>
