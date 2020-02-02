@@ -165,14 +165,15 @@ function search(query) {
                 let song_name = track_id_list[random_index][1];
                 let album_cover = track_id_list[random_index][2];
 
-                play(song_id);
+                // play(song_id);
 
-                document.getElementById("current_song_label").className = "current_song_label_shown";
-                document.getElementById("album_cover").className = "album_cover_shown";
-                document.getElementById("current_song").innerHTML = song_name;
-                document.getElementById("album_cover").src = album_cover;
+                // document.getElementById("current_song_label").className = "current_song_label_shown";
+                // document.getElementById("album_cover").className = "album_cover_shown";
+                // document.getElementById("current_song").innerHTML = song_name;
+                // document.getElementById("album_cover").src = album_cover;
 
                 sessionStorage.setItem('track_info', JSON.stringify(track_id_list));
+                sessionStorage.setItem('token', token);
 
                 window.location.href = '../game/game.html';
 
