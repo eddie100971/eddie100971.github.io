@@ -76,7 +76,7 @@ function play(song_id) {
     $.ajax({
       url: "https://api.spotify.com/v1/me/player/play?device_id=" + device,
       type: "PUT",
-      data: '{"uris": ["spotify:track:' + song_id + '"]}',
+      data: '{"uris": ["spotify:track:' + song_id + '"], "position_ms": 12000}',
       beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
       success: function(data) { 
         console.log("Playing song.");
