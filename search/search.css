@@ -23,8 +23,8 @@
 }
 .albumcoverwrapper{
   position: absolute;
-  right:-50%;
-  top: 400px;
+  top: 30vh;
+  left: -10vh;
 }
 
 h1, h2 {
@@ -33,7 +33,7 @@ h1, h2 {
 
 .user{
   position: relative;
-  top:30%;
+  top:10vh;
   left:15%;
   font-family: "circular-book";
   color: white;
@@ -63,7 +63,7 @@ img{
 .imagewrapper{
   position: absolute;
   top:22.5%;
-  left:22.5%;
+  left:20%;
 }
 .wrapper{
 	position: absolute;
@@ -123,6 +123,18 @@ img{
   left: 29%;
 } */
 
-.current_song {
-  color: darkgreen;
+.current_song_label_hidden {
+  display: none;
+}
+
+.current_song_label_shown {
+  color:darkgreen;
+}
+
+.album_cover_shown {
+  display: block;
+}
+
+.album_cover_hidden {
+  display: none;
 }

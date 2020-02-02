@@ -102,7 +102,7 @@ function searchUser() {
     $.ajax({
         url: 'https://api.spotify.com/v1/me',
         type: "GET",
-        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
+        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token);},
         success: function(data) { 
             console.log("Got user info.");
             let username = data.display_name;
@@ -205,6 +205,8 @@ function search(query) {
 
                 play(song_id);
 
+                document.getElementById("current_song_label").className = "current_song_label_shown";
+                document.getElementById("album_cover").className = "album_cover_shown";
                 document.getElementById("current_song").innerHTML = song_name;
                 document.getElementById("album_cover").src = album_cover;
 

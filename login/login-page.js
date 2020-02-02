@@ -20,7 +20,8 @@
             return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID +
               '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) +
               '&scope=' + encodeURIComponent(scopes.join(' ')) +
-              '&response_type=token';
+              '&response_type=token' +
+              '&show_dialog=true';
         }
         
         var url = getLoginURL([
@@ -61,9 +62,7 @@
         window.location.hash = '';
   
         // Set token
-        let _token = hash.access_token;
-        console.log(_token);
-              
+        let _token = hash.access_token;             
         } 
     
   })();
