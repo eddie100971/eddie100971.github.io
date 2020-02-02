@@ -90,11 +90,16 @@ function chooseAnswer(choice_num) {
     // console.log(user_choice);
     if (answer == user_choice) {
         console.log("Correct!");
+        document.getElementById("choice1").style.backgroundColor ="#58D384";
+        document.getElementById("choice2").style.backgroundColor ="#58D384";
+        document.getElementById("choice3").style.backgroundColor ="#58D384";
+        document.getElementById("choice4").style.backgroundColor ="#58D384";
         ++score;
         document.getElementById("score").innerHTML = "Score: " + score;
         startGame();
     } else {
-        alert("Wrong! Choose again!");
+        //alert("Wrong! Choose again!");
+        document.getElementById(choice_num).style.backgroundColor = "#9B1C31";
     }
 }
 
