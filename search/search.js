@@ -12,20 +12,11 @@ const hash = window.location.hash
 window.location.hash = '';
 
 // Set token
-let token = hash.access_token;   
+let token = hash.access_token;
+//token = "BQDMHvAtEyZbkvLdpAxpb9CHsnmsFBjLdqvAcec_Wdih16xQmSqJed_Vg3wROeRD4ourecuNdJbNDkGPgSV3qBV8JzoG76nv9o1lqygqJn2q4_n-qWtfWOFKDsjyXhF2VyW24c_BzCXZ8FuEOpZSwSIf2LHTVPOKSeEhskX26Yp9KQ";   
 
 console.log("Token: " + token);
 
-const authEndpoint = 'https://accounts.spotify.com/authorize';
-
-const clientId = 'c73c11f33ea4410db54b8afefecca3ef';
-const redirectUri = 'https://spotify-web-playback.glitch.me';
-const scopes = [
-  'streaming',
-  'user-read-birthdate',
-  'user-read-private',
-  'user-modify-playback-state'
-];
 
 device = '';
 
@@ -57,7 +48,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
   // Connect to the player!
   player.connect();
-
+  getThreeFeatured();
   searchUser();
 };
 
@@ -98,19 +89,52 @@ function resume() {
    });
 }
 
+//Get Profile Pic
 function searchUser() {
     $.ajax({
         url: 'https://api.spotify.com/v1/me',
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token);},
         success: function(data) { 
-            console.log("Got user info.");
+            //console.info(data);
+            console.log("Searched User for profile pic.");
             let username = data.display_name;
             let profile_pic = data.images[0].url;
             document.getElementById("username").innerHTML = username;
             document.getElementById("profile_pic").src = profile_pic;
         }
     });
+};
+
+function getThreeFeatured() {
+  $.ajax({
+    url: 'https://api.spotify.com/v1/me/top/artists?limit=3&offset=0',
+    type: "GET",
+    beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token);},
+    success: function(data) { 
+        //console.log("Got to the getThreeFeatured() info.");
+        var i;
+        var arrTopThree = [];
+        console.log(data);
+        console.log("Found Top Three artists.");
+        for(i= 0; i<data.items.length; i++){
+          arrTopThree[i] = [data.items[i].name,data.items[i].images[0],data.items[i].uri];
+        }
+        document.getElementById("topArtist_1_profile").src = arrTopThree[0][1].url;
+        document.getElementById("topArtist_1_name").innerHTML = arrTopThree[0][0];
+
+        document.getElementById("topArtist_2_profile").src = arrTopThree[1][1].url;
+        document.getElementById("topArtist_2_name").innerHTML = arrTopThree[1][0];
+
+        document.getElementById("topArtist_3_profile").src = arrTopThree[2][1].url;
+        document.getElementById("topArtist_3_name").innerHTML = arrTopThree[2][0];
+
+        //console.log(arrTopThree);
+    }
+
+    
+});
+    console.info("fail");
 };
 
 let track_id_list = [];
