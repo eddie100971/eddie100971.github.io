@@ -70,7 +70,7 @@ img{
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0,0.6);
+    /*background: rgba(0, 0, 0,0.6);*/
     max-width: 550px;
     width: 100%;
     padding: 15px;
@@ -90,7 +90,6 @@ img{
 }
 
 .searchbtn {
-    background: #ffec00;
     width: 10%;
     border-radius: 5px;
     position: relative;
@@ -103,7 +102,7 @@ img{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 18px;
+    font-size: 20px;
 
 }
 
@@ -116,7 +115,12 @@ img{
 .search:hover{
   background-color: #58D384; /* Green */color: black;
 }
-
+.username:hover{
+  color: #58D384;
+}
+.user:hover{
+  color: #58D384;
+}
 /* .spotify-image{
   position: absolute;
   top: 18%;
