@@ -8,6 +8,7 @@
         login(function(accessToken) {
             getUserData(accessToken)
                 .then(function(response) {
+                    template.body.style.backgroundColor = "red";
                     resultsPlaceholder.innerHTML = template(response);
                 });
             });
