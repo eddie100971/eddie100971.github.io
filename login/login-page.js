@@ -2,10 +2,8 @@
 
 
     let loginButton = document.getElementById('login_button');
-    // let resultsPlaceholder = document.getElementById('result');
     
     loginButton.addEventListener('click', function(event) {
-        console.log("Button clicked.");
         login(function(accessToken) {
             getUserData(accessToken)
                 .then(function(response) {
@@ -39,28 +37,8 @@
                 callback(hash.access_token);
             }
         }, false);
-        
-        // var w = window.open(url,
-        //                     'Spotify',
-        //                     'menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left
-        //                    );
-        var w = window.location.href = url;
-  
-        // Get the hash of the url
-        const hash = window.location.hash
-        .substring(1)
-        .split('&')
-        .reduce(function (initial, item) {
-          if (item) {
-            var parts = item.split('=');
-            initial[parts[0]] = decodeURIComponent(parts[1]);
-          }
-          return initial;
-        }, {});
-        window.location.hash = '';
-  
-        // Set token
-        let _token = hash.access_token;             
+
+        var w = window.location.href = url;          
         } 
     
   })();

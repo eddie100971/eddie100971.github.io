@@ -142,7 +142,7 @@ let deferred = [];
 
 function search(query) {
   let artist_name = document.getElementById("artist_name").value;
-  console.log(artist_name);
+  // console.log(artist_name);
 
   if (artist_name) {
     $.ajax({
@@ -150,7 +150,6 @@ function search(query) {
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
         success: function(data) { 
-          let artist_id = data.artists.items[0].id;
         //   console.log(data.artists.items[0].name);
         //   console.log("ID: " + artist_id)
         }

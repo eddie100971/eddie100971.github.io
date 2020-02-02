@@ -60,9 +60,9 @@ function startGame() {
     play(four_songs[play_index][0]);
     answer = four_songs[play_index][1];
 
-    console.log("Already played array: " + already_played);
-    console.log("Four random indices: " + four_random_ind);
-    console.log("Playing index " + play_index + " of the random four.");
+    // console.log("Already played array: " + already_played);
+    // console.log("Four random indices: " + four_random_ind);
+    // console.log("Playing index " + play_index + " of the random four.");
     console.log("Currently playing: " + answer);
 
     document.getElementById("choice1").innerHTML = first_choice_name;
@@ -85,7 +85,10 @@ function play(song_id) {
 }
 
 function chooseAnswer(choice_num) {
-    if (answer == document.getElementById(choice_num).innerHTML) {
+    // console.log(answer);
+    user_choice = document.getElementById(choice_num).innerHTML.replace("&amp;", "&")
+    // console.log(user_choice);
+    if (answer == user_choice) {
         console.log("Correct!");
         ++score;
         document.getElementById("score").innerHTML = "Score: " + score;
