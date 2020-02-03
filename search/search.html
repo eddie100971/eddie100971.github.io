@@ -10,32 +10,11 @@
 
 </head>
 <body style = "background-image: linear-gradient(#3D3D3D, #131111)">
-        <div class="wrapper">
-            <!-- <input type="text" class="input" placeholder="Search Artist"> -->
-            <input type="text" class="input searchtext" placeholder="Pick an artist..." id="artist_name">
-            
-            <div class="searchbtn"><button onclick="search()" id="search_button" class="search"></button1><i class="fas fa-search"></i></div>
-        </div>
-        <!-- <div class="spotify-image">
-            <img class = 'image' src = "../images/spotify.png" height= "150" width="150">
-        </div> -->
+
         <div class="imagewrapper" style="margin-left: 10px;">
             <div>
                 <img id ="profile_pic" height = "200" width = "200" onclick="toWebPlayer()">
             </div>
-            <div style="display: inline-block;" class="artist">
-                <img  id ="topArtist_1_profile" height = "150" width = "150"  onclick= "toArtist_1()">>
-                <div id= "topArtist_1_name" class = "artist_name"></div>
-
-                <img  id ="topArtist_2_profile" height = "150" width = "150">
-                <div id= "topArtist_2_name" class = "artist_name"></div>
-
-                <img  id ="topArtist_3_profile" height = "150" width = "150">
-                <div id= "topArtist_3_name" class = "artist_name"></div>
-
-            </div>
-
-
         </div>
         
         <div class="otherwrapper">
@@ -44,34 +23,31 @@
             <div id="username" class = "username"></div>    
             
         </div>  
-        
-        <!-- <div class="albumcoverwrapper"> -->
-            <!-- <div class="onclickbuttonwrapper"> -->
-                <!-- <button onclick="play('7GhIk7Il098yCjg4BQjzvb')">Start</button>
-                <button onclick="resume()">Resume</button>
-                <button onclick="stop()">Pause</button>
-                <button onclick="searchUser()">Test</button> -->
-            <!-- </div> -->
-            <!-- <h1 id = "current_song_label" class = "current_song_label_hidden">Current song:</h1>
-            <img class = "album_cover_hidden" id="album_cover" height = "100" width = "100">
-            <h2 class = "current_song" id="current_song"></h2> -->
-        <!-- </div> -->
-        
-    <!-- <button id="search_button" onclick="search()">Search</button><br><br> -->
-    <!-- <button id="login_button">Login</button> -->
-    <script>        function toArtist_1(){
-        window.open("https://open.spotify.com/artist/1EowJ1WwkMzkCkRomFhui7")
-    }
-    function toArtist_2(){
-        window.open("https://open.spotify.com/artist/1AhjOkOLkbHUfcHDSErXQs")
-    }
-    function toArtist_3(){
-        window.open("spotify:artist:1EowJ1WwkMzkCkRomFhui7")
-    }
-        function toWebPlayer(){
-            window.open("https://open.spotify.com/")
-        }
-    </script>
+
+        <div class="wrapper">
+            <input type="text" class="input searchtext" placeholder="Pick an artist..." id="artist_name">
+            
+            <div class="searchbtn"><button onclick="search()" id="search_button" class="search"></button1><i class="fas fa-search"></i></div>
+        </div>
+
+        <div class="artist">
+            <div class="top_artist">
+                <h2 id= "topArtist_1_name" class = "artist_name"></h2>
+                <img class = "top_artist_img" id ="topArtist_1_profile" height = "150" width = "150"  onclick= "toArtist_1()">
+            </div>
+
+            <div class="top_artist">
+                <h2 id= "topArtist_2_name" class = "artist_name"></h2>
+                <img class = "top_artist_img" id ="topArtist_2_profile" height = "150" width = "150">
+            </div>
+
+            <div class="top_artist">
+                <h2 id= "topArtist_3_name" class = "artist_name"></h2>
+                <img class = "top_artist_img" id ="topArtist_3_profile" height = "150" width = "150">
+            </div>
+            
+        </div>
+
     <script src="search.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"

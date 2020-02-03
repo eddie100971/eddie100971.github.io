@@ -53,7 +53,6 @@ img{
   border-radius: 50%;
   position: relative;
   top: 30%;
-  left: 7vh; 
 }
 
 img:hover{
@@ -69,8 +68,9 @@ img:hover{
 .imagewrapper{
   position: absolute;
   top:22.5%;
-  left:20%;
+  left: 20vh; 
 }
+
 .wrapper{
 	position: absolute;
     top: 55%;
@@ -109,7 +109,6 @@ img:hover{
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 20px;
-
 }
 
 .search{
@@ -128,11 +127,6 @@ img:hover{
 .welcome:hover{
   color: #58D384;
 }
-/* .spotify-image{
-  position: absolute;
-  top: 18%;
-  left: 29%;
-} */
 
 .current_song_label_hidden {
   display: none;
@@ -148,4 +142,24 @@ img:hover{
 
 .album_cover_hidden {
   display: none;
+}
+
+.artist {
+  display: -webkit-inline-box;
+  position: absolute;
+  top: 65%;
+  left: 20%;
+  font-size: 22px;
+  color: white;
+}
+
+.top_artist {
+  margin-left: 50px;
+  max-width: 400px;
+  width: 300px;
+  left: 0;
+}
+
+.top_artist_img {
+  margin-top: 15px;
 }

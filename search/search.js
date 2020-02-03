@@ -13,7 +13,6 @@ window.location.hash = '';
 
 // Set token
 let token = hash.access_token;
-//token = "BQDMHvAtEyZbkvLdpAxpb9CHsnmsFBjLdqvAcec_Wdih16xQmSqJed_Vg3wROeRD4ourecuNdJbNDkGPgSV3qBV8JzoG76nv9o1lqygqJn2q4_n-qWtfWOFKDsjyXhF2VyW24c_BzCXZ8FuEOpZSwSIf2LHTVPOKSeEhskX26Yp9KQ";   
 
 console.log("Token: " + token);
 
@@ -225,3 +224,16 @@ input.addEventListener("keyup", function(event) {
     document.getElementById("search_button").click();
   }
 });
+
+function toArtist_1(){
+  window.open("https://open.spotify.com/artist/1EowJ1WwkMzkCkRomFhui7")
+}
+function toArtist_2(){
+  window.open("https://open.spotify.com/artist/1AhjOkOLkbHUfcHDSErXQs")
+}
+function toArtist_3(){
+  window.open("spotify:artist:1EowJ1WwkMzkCkRomFhui7")
+}
+function toWebPlayer(){
+  window.open("https://open.spotify.com/")
+}
