@@ -47,7 +47,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
   // Connect to the player!
   player.connect();
-  getThreeFeatured();
+  getThreeArtist();
   searchUser();
 };
 
@@ -105,19 +105,19 @@ function searchUser() {
     });
 };
 
-function getThreeFeatured() {
+// Gets Top Three Artist
+let arrTopThree = [];
+function getThreeArtist() {
   $.ajax({
     url: 'https://api.spotify.com/v1/me/top/artists?limit=3&offset=0',
     type: "GET",
     beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token);},
     success: function(data) { 
-        //console.log("Got to the getThreeFeatured() info.");
         var i;
-        var arrTopThree = [];
         console.log(data);
         console.log("Found Top Three artists.");
         for(i= 0; i<data.items.length; i++){
-          arrTopThree[i] = [data.items[i].name,data.items[i].images[0],data.items[i].uri];
+          arrTopThree[i] = [data.items[i].name,data.items[i].images[0],data.items[i].external_urls];
         }
         document.getElementById("topArtist_1_profile").src = arrTopThree[0][1].url;
         document.getElementById("topArtist_1_name").innerHTML = arrTopThree[0][0];
@@ -127,8 +127,7 @@ function getThreeFeatured() {
 
         document.getElementById("topArtist_3_profile").src = arrTopThree[2][1].url;
         document.getElementById("topArtist_3_name").innerHTML = arrTopThree[2][0];
-
-        //console.log(arrTopThree);
+        console.log(arrTopThree);
     }
 
     
@@ -226,13 +225,13 @@ input.addEventListener("keyup", function(event) {
 });
 
 function toArtist_1(){
-  window.open("https://open.spotify.com/artist/1EowJ1WwkMzkCkRomFhui7")
+  window.open(arrTopThree[0][2].spotify);
 }
 function toArtist_2(){
-  window.open("https://open.spotify.com/artist/1AhjOkOLkbHUfcHDSErXQs")
+  window.open(arrTopThree[1][2].spotify);
 }
 function toArtist_3(){
-  window.open("spotify:artist:1EowJ1WwkMzkCkRomFhui7")
+  window.open(arrTopThree[2][2].spotify);
 }
 function toWebPlayer(){
   window.open("https://open.spotify.com/")
