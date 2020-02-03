@@ -19,10 +19,23 @@
         <!-- <div class="spotify-image">
             <img class = 'image' src = "../images/spotify.png" height= "150" width="150">
         </div> -->
-        <div class="imagewrapper">
+        <div class="imagewrapper" style="margin-left: 10px;">
             <div>
                 <img id ="profile_pic" height = "200" width = "200" onclick="toWebPlayer()">
             </div>
+            <div style="display: inline-block;" class="artist">
+                <img  id ="topArtist_1_profile" height = "150" width = "150"  onclick= "toArtist_1()">>
+                <div id= "topArtist_1_name" class = "artist_name"></div>
+
+                <img  id ="topArtist_2_profile" height = "150" width = "150">
+                <div id= "topArtist_2_name" class = "artist_name"></div>
+
+                <img  id ="topArtist_3_profile" height = "150" width = "150">
+                <div id= "topArtist_3_name" class = "artist_name"></div>
+
+            </div>
+
+
         </div>
         
         <div class="otherwrapper">
@@ -30,7 +43,7 @@
             <div class="welcome">Welcome,</div>
             <div id="username" class = "username"></div>    
             
-        </div>        
+        </div>  
         
         <!-- <div class="albumcoverwrapper"> -->
             <!-- <div class="onclickbuttonwrapper"> -->
@@ -46,7 +59,15 @@
         
     <!-- <button id="search_button" onclick="search()">Search</button><br><br> -->
     <!-- <button id="login_button">Login</button> -->
-    <script>
+    <script>        function toArtist_1(){
+        window.open("https://open.spotify.com/artist/1EowJ1WwkMzkCkRomFhui7")
+    }
+    function toArtist_2(){
+        window.open("https://open.spotify.com/artist/1AhjOkOLkbHUfcHDSErXQs")
+    }
+    function toArtist_3(){
+        window.open("spotify:artist:1EowJ1WwkMzkCkRomFhui7")
+    }
         function toWebPlayer(){
             window.open("https://open.spotify.com/")
         }
