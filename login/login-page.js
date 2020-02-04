@@ -14,7 +14,7 @@
     
     function login(callback) {
         var CLIENT_ID = 'c73c11f33ea4410db54b8afefecca3ef';
-        var REDIRECT_URI = 'http://127.0.0.1:5500/search/search.html';
+        var REDIRECT_URI = 'https://huynheddie.github.io/search/search.html';
         var scopes = "user-read-birthdate user-read-private user-modify-playback-state user-top-read";
         function getLoginURL(scopes) {
             return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID +
