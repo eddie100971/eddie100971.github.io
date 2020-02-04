@@ -163,3 +163,7 @@ img:hover{
 .top_artist_img {
   margin-top: 15px;
 }
+
+.profile_pic {
+  left: 35vh;
+}
