@@ -52,7 +52,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
   // Connect to the player!
   player.connect();
-  getThreeArtist();
+  // getThreeArtist();
   searchUser();
 };
 
@@ -112,36 +112,36 @@ function searchUser() {
 
 
 
-function getThreeArtist() {
-  $.ajax({
-    url: 'https://api.spotify.com/v1/me/top/artists?limit=3&offset=0',
-    type: "GET",
-    beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token);},
-    success: function(data) { 
-        var i;
-        //console.log(data);
-        //console.log("Found Top Three artists.");
-        for(i= 0; i<data.items.length; i++){
-          arrTopThree[i] = [data.items[i].name,data.items[i].images[0],data.items[i].external_urls];
-        }
-        document.getElementById("topArtist_1_profile").src = arrTopThree[0][1].url;
-        document.getElementById("topArtist_1_name").innerHTML = arrTopThree[0][0];
+// function getThreeArtist() {
+//   $.ajax({
+//     url: 'https://api.spotify.com/v1/me/top/artists?limit=3&offset=0',
+//     type: "GET",
+//     beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token);},
+//     success: function(data) { 
+//         var i;
+//         //console.log(data);
+//         //console.log("Found Top Three artists.");
+//         for(i= 0; i<data.items.length; i++){
+//           arrTopThree[i] = [data.items[i].name,data.items[i].images[0],data.items[i].external_urls];
+//         }
+//         document.getElementById("topArtist_1_profile").src = arrTopThree[0][1].url;
+//         document.getElementById("topArtist_1_name").innerHTML = arrTopThree[0][0];
 
-        document.getElementById("topArtist_2_profile").src = arrTopThree[1][1].url;
-        document.getElementById("topArtist_2_name").innerHTML = arrTopThree[1][0];
+//         document.getElementById("topArtist_2_profile").src = arrTopThree[1][1].url;
+//         document.getElementById("topArtist_2_name").innerHTML = arrTopThree[1][0];
 
-        document.getElementById("topArtist_3_profile").src = arrTopThree[2][1].url;
-        document.getElementById("topArtist_3_name").innerHTML = arrTopThree[2][0];
-        //console.log(arrTopThree);
-        getTopArtistTracks(arrTopThree[0][0],1);
-        getTopArtistTracks(arrTopThree[1][0],2);
-        getTopArtistTracks(arrTopThree[2][0],3);
-        //console.log("called get top artist tracks")
-    }
+//         document.getElementById("topArtist_3_profile").src = arrTopThree[2][1].url;
+//         document.getElementById("topArtist_3_name").innerHTML = arrTopThree[2][0];
+//         //console.log(arrTopThree);
+//         getTopArtistTracks(arrTopThree[0][0],1);
+//         getTopArtistTracks(arrTopThree[1][0],2);
+//         getTopArtistTracks(arrTopThree[2][0],3);
+//         //console.log("called get top artist tracks")
+//     }
 
     
-});
-};
+// });
+// };
 
 let track_id_list = [];
 let deferred = [];
@@ -223,60 +223,60 @@ function search() {
 // If i say temp2 = [], inside the if condition theres only like one song per artist
 // async type of api call
 // Takes parameters artist name and number 
-let temp1 = [];
-let temp2 = [];
-function getTopArtistTracks(artist, num) {
-    //console.log(artist);
-    //console.log("got to the function"); 
-    $.ajax({
-        url: "https://api.spotify.com/v1/search?q=" + artist + "&type=artist" + "&limit=1",
-        type: "GET",
-        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
-        success: function(data) { 
+// let temp1 = [];
+// let temp2 = [];
+// function getTopArtistTracks(artist, num) {
+//     //console.log(artist);
+//     //console.log("got to the function"); 
+//     $.ajax({
+//         url: "https://api.spotify.com/v1/search?q=" + artist + "&type=artist" + "&limit=1",
+//         type: "GET",
+//         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
+//         success: function(data) { 
       
-        }
-       }).then((data) => {
-        // Get artist's albums
-        $.ajax({
-          url: "https://api.spotify.com/v1/artists/" + data.artists.items[0].id + "/albums?country=US",
-          type: "GET",
-          beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
-          success: function(data) { 
-            //console.log("Found artist's albums.");
-            let albums = data.items;
-            // Find tracks in each album
-            albums.forEach(element => {
-                let album_id = element.id;
-                let album_cover = element.images[0].url;
-                temp1.push(
-                    $.ajax({
-                        url: "https://api.spotify.com/v1/albums/" + album_id + "/tracks",
-                        type: "GET",
-                        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
-                        success: function(data) { 
-                            tracks = data.items;
-                            tracks.forEach(element => {
-                                temp2.push([element.id, element.name, album_cover]);
-                            });
-                            if (num == 1){
-                              artist_1_tracks = temp2;
+//         }
+//        }).then((data) => {
+//         // Get artist's albums
+//         $.ajax({
+//           url: "https://api.spotify.com/v1/artists/" + data.artists.items[0].id + "/albums?country=US",
+//           type: "GET",
+//           beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
+//           success: function(data) { 
+//             //console.log("Found artist's albums.");
+//             let albums = data.items;
+//             // Find tracks in each album
+//             albums.forEach(element => {
+//                 let album_id = element.id;
+//                 let album_cover = element.images[0].url;
+//                 temp1.push(
+//                     $.ajax({
+//                         url: "https://api.spotify.com/v1/albums/" + album_id + "/tracks",
+//                         type: "GET",
+//                         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token );},
+//                         success: function(data) { 
+//                             tracks = data.items;
+//                             tracks.forEach(element => {
+//                                 temp2.push([element.id, element.name, album_cover]);
+//                             });
+//                             if (num == 1){
+//                               artist_1_tracks = temp2;
                               
-                            }else if (num == 2){
-                              artist_2_tracks = temp2;
+//                             }else if (num == 2){
+//                               artist_2_tracks = temp2;
              
-                            }else if (num == 3){
-                              artist_3_tracks = temp2;
+//                             }else if (num == 3){
+//                               artist_3_tracks = temp2;
                    
-                            }
-                        }
+//                             }
+//                         }
                         
-                    })
-                )
-            });
-          }
-        })
-       });  
-  }
+//                     })
+//                 )
+//             });
+//           }
+//         })
+//        });  
+//   }
 
 // Get the input field
 let input = document.getElementById("artist_name");
@@ -292,39 +292,39 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
-// Need a seperate perview for each player
-let currSong; 
-function preview1(){
-  console.log(artist_1_tracks);
-  currSong = Math.floor(Math.random() * Math.floor(artist_1_tracks.length));
-  play(artist_1_tracks[currSong][0]);
-}
+// // Need a seperate perview for each player
+// let currSong; 
+// function preview1(){
+//   console.log(artist_1_tracks);
+//   currSong = Math.floor(Math.random() * Math.floor(artist_1_tracks.length));
+//   play(artist_1_tracks[currSong][0]);
+// }
 
-function preview2(){
-  console.log(artist_2_tracks);
-  currSong = Math.floor(Math.random() * Math.floor(artist_2_tracks.length));
-  play(artist_2_tracks[currSong][0]);
-}
-function preview3(){
-  console.log(artist_3_tracks);
-  currSong = Math.floor(Math.random() * Math.floor(artist_3_tracks.length));
-  play(artist_3_tracks[currSong][0]);
-}
+// function preview2(){
+//   console.log(artist_2_tracks);
+//   currSong = Math.floor(Math.random() * Math.floor(artist_2_tracks.length));
+//   play(artist_2_tracks[currSong][0]);
+// }
+// function preview3(){
+//   console.log(artist_3_tracks);
+//   currSong = Math.floor(Math.random() * Math.floor(artist_3_tracks.length));
+//   play(artist_3_tracks[currSong][0]);
+// }
 
-function stopPreview(){
-  console.log("stop");
-  stop(currSong);
-}
+// function stopPreview(){
+//   console.log("stop");
+//   stop(currSong);
+// }
 
-function toArtist_1(){
-  window.open(arrTopThree[0][2].spotify);
-}
-function toArtist_2(){
-  window.open(arrTopThree[1][2].spotify);
-}
-function toArtist_3(){
-  window.open(arrTopThree[2][2].spotify);
-}
-function toWebPlayer(){
-  window.open("https://open.spotify.com/")
-}
+// function toArtist_1(){
+//   window.open(arrTopThree[0][2].spotify);
+// }
+// function toArtist_2(){
+//   window.open(arrTopThree[1][2].spotify);
+// }
+// function toArtist_3(){
+//   window.open(arrTopThree[2][2].spotify);
+// }
+// function toWebPlayer(){
+//   window.open("https://open.spotify.com/")
+// }
