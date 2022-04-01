@@ -13,9 +13,10 @@
     });
     
     function login(callback) {
-        var CLIENT_ID = 'c73c11f33ea4410db54b8afefecca3ef';
-        // var REDIRECT_URI = 'https://eddie100971.github.io/quizifyPublic/search/search.html';
-        var REDIRECT_URI = 'https://huynheddie.github.io/search/search.html';
+        var CLIENT_ID = '231434524369420f8d46d7cd069e8aeb';
+        var REDIRECT_URI = 'https://eddie100971.github.io/search/search.html';
+        // var REDIRECT_URI = 'http://localhost:8888/callback';
+        // var REDIRECT_URI = 'https://huynheddie.github.io/search/search.html';
         var scopes = "user-read-birthdate user-read-private user-modify-playback-state user-top-read";
         function getLoginURL(scopes) {
             return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID +
